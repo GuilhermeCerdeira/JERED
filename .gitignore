@@ -1,0 +1,26 @@
+# Godot-specific files
+.godot/
+export_presets.cfg.tmp
+*.pck
+*.zip
+
+# Mono/.NET-specific files (if using Godot Mono)
+.mono/
+/build/
+/bin/
+[Bb]in/
+[Oo]bj/
+
+# OS-generated temporary files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor-specific files
+.idea/
+.vs/
+.vscode/
+
+# Optional: Add any specific large assets, external libraries, or custom build folders here
+# For example:
+# /assets/large_sounds/
+# /libs/
