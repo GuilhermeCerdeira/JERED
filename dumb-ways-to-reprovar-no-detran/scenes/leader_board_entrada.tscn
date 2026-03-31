@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://fd1laj5co37a"]
+
+[ext_resource type="Script" uid="uid://cu370coxqpg8n" path="res://scripts/leader_board_entrada.gd" id="1_ywk2c"]
+
+[node name="LeaderboardEntrada" type="HBoxContainer" unique_id=160507385]
+offset_left = -965.0
+offset_top = -483.0
+offset_right = 187.0
+offset_bottom = 162.0
+script = ExtResource("1_ywk2c")
+
+[node name="Rank" type="Label" parent="." unique_id=331320432]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="." unique_id=1788751246]
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="." unique_id=615207404]
+layout_mode = 2
+text = "HGAHAHAHAHAHAHA"
+horizontal_alignment = 2
+vertical_alignment = 2

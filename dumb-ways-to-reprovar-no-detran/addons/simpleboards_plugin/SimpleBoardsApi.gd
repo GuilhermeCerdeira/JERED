@@ -7,10 +7,15 @@ signal request_failed(response_code, body)
 @export var api_key: String = "51d05e3d-42be-4751-afc7-e7eaf4039748"
 @export var base_url: String = "https://api.simpleboards.dev/api/"
 
+
+func _ready():
+	print(">>> [API] Sistema de comunicação iniciado.")
+	print(">>> [API] Usando chave: ", api_key.left(5), "...") # Mostra só o começo por segurança
+	
+	
 func set_api_key(key: String):
 	"""Sets the API key for authentication."""
 	api_key = key
-
 
 func get_entries(leaderboard_id: String):
 	"""Fetches leaderboard entries for a given leaderboard ID."""
@@ -115,16 +120,21 @@ func send_score_without_id(
 func _perform_request(method: int, url: String, headers: Array, body := ""):
 	var http_request := HTTPRequest.new()
 	add_child(http_request)
-
+	
+	print(">>> [API] Enviando pedido para: ", url)
+	
 	var err = http_request.request(url, headers, method, body)
 	if err != OK:
 		http_request.queue_free()
-		push_error("HTTP request creation failed with error code %s" % err)
+		print(">>> [API] Erro ao criar pedido HTTP: ", err)
 		return null
 
 	var result = await http_request.request_completed
 	http_request.queue_free()
 
+	# LOG DE DEBUG
+	print(">>> [API] Servidor respondeu com código: ", result[1])
+	
 	var response = {
 		"result": result[0],
 		"response_code": result[1],

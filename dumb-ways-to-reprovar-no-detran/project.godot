@@ -19,6 +19,10 @@ run/main_scene="uid://def1o8r03djfm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://images/icon.svg"
 
+[autoload]
+
+SimpleBoards="*uid://cbwgqa5bydk6f"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/simpleboards_plugin/plugin.cfg")
