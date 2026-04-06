@@ -44,8 +44,10 @@ func show_end_screen(win : bool, question : CompressedTexture2D):
 	end_screen_instance.count_points.connect(save_points_in_leaderboard)
 	end_screen_instance.show_screen(win, question, lives, points)
 
+func create_player_id():
+	var player_id = AutoloadData.player_name.hash()
+	return str(player_id)
+	
 func save_points_in_leaderboard():
-	## INSERT ENTRY IN LEADERBOARD
-	## GET POINTS FROM "points"
-	## GET PLAYER NAME FROM "AutoloadData.player_name"
+	SimpleBoards.send_score_with_id('b06851a0-d63d-48f0-5a2b-08de8c0e271a', AutoloadData.player_name, points, null, create_player_id())
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
