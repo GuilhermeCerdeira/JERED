@@ -47,7 +47,24 @@ func show_end_screen(win : bool, question : CompressedTexture2D):
 func create_player_id():
 	var player_id = AutoloadData.player_name.hash()
 	return str(player_id)
-	
+
+func compare_scores() -> bool:
+	var entries = await SimpleBoards.get_entries('b06851a0-d63d-48f0-5a2b-08de8c0e271a')
+	if entries == null:
+		return true
+	var player_id = create_player_id()
+	var existing_entry = null
+	for entry in entries:
+		print(entry.get('playerId'))
+		if entry.get('playerId') == player_id:
+			existing_entry = entry
+			break
+	if existing_entry == null:
+		return true
+	var old_score = int(existing_entry.get("score", 0))
+	return points > old_score
+
 func save_points_in_leaderboard():
-	SimpleBoards.send_score_with_id('b06851a0-d63d-48f0-5a2b-08de8c0e271a', AutoloadData.player_name, points, null, create_player_id())
+	if await compare_scores():
+		await SimpleBoards.send_score_with_id('b06851a0-d63d-48f0-5a2b-08de8c0e271a', AutoloadData.player_name, points, null, create_player_id())
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")

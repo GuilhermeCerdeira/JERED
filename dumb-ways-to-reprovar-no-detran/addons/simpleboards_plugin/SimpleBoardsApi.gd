@@ -23,20 +23,18 @@ func get_entries(leaderboard_id: String):
 	var headers = [
 		"x-api-key: " + api_key
 	]
-
 	var response = await _perform_request(HTTPClient.METHOD_GET, url, headers)
 	if response == null:
 		return
-
 	var response_code = response.response_code
 	var body = response.body
-
 	if response_code == 200:
 		var parsed = JSON.parse_string(body.get_string_from_utf8())
 		if parsed is Array:
 			entries_got.emit(parsed)
 		else:
 			entry_sent.emit(parsed)
+		return parsed
 	else:
 		request_failed.emit(response_code, JSON.parse_string(body.get_string_from_utf8()))
 
