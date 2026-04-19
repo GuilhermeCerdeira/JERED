@@ -32,6 +32,7 @@ offset_left = 130.0
 offset_top = -182.0
 offset_right = 817.0
 offset_bottom = 505.0
+expand_mode = 1
 
 [node name="ChallengesLabel" type="Label" parent="." unique_id=283247837]
 offset_left = -664.0

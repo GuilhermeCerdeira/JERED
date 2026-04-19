@@ -51,9 +51,8 @@ func _on_stick_button_button_down():
 		particle_emit(false)
 
 func _on_timeout():
-	check_win_condition()
-	# or
-	lose.emit(self)
+	if not check_win_condition():
+		lose.emit(self)
 
 func _on_down_finished():
 	rev_low_sound.play()
@@ -64,6 +63,8 @@ func _on_up_finished():
 func _on_particle_finished():
 	check_win_condition()
 	
-func check_win_condition():
+func check_win_condition() -> bool:
 	if clutch_in and stick.frame == 1:
 		win.emit(self, win_points_default_value())
+		return true
+	return false

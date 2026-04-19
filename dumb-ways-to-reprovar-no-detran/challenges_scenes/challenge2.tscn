@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://8etwwo4ou4b"]
 
 [ext_resource type="Script" uid="uid://3giq406fiby" path="res://challenges/challenge2/scripts/challenge2.gd" id="1_i82w0"]
-[ext_resource type="Texture2D" uid="uid://couga60g37vwc" path="res://challenges/challenge2/images/questao-2.png" id="2_k361y"]
+[ext_resource type="Texture2D" uid="uid://ds2g58yg5v436" path="res://challenges/challenge2/images/question-2.png" id="2_jetoc"]
 [ext_resource type="Texture2D" uid="uid://bga1s6fjihxrq" path="res://challenges/challenge2/images/prf.png" id="2_vr6lj"]
 [ext_resource type="Texture2D" uid="uid://cvsbj2xewx66s" path="res://challenges/challenge2/images/intersection.png" id="3_k361y"]
 [ext_resource type="Texture2D" uid="uid://brkahr78b5j2c" path="res://challenges/challenge2/images/carro1.png" id="4_wd2oo"]
 [ext_resource type="Texture2D" uid="uid://qhr1a8tf5os6" path="res://challenges/challenge2/images/carro2.png" id="5_wt1bt"]
 [ext_resource type="Texture2D" uid="uid://ci0kslr6woxmb" path="res://challenges/challenge2/images/carro3.png" id="6_vc83w"]
 [ext_resource type="Texture2D" uid="uid://cx380s6af3yao" path="res://challenges/challenge2/images/traffic-light.png" id="7_3kn81"]
+[ext_resource type="AudioStream" uid="uid://srol7iwwksn4" path="res://challenges/challenge2/sounds/traffic.mp3" id="9_jetoc"]
 
 [sub_resource type="Animation" id="Animation_vr6lj"]
 length = 0.001
@@ -73,7 +74,7 @@ _data = {
 [node name="Challenge2" type="Node2D" unique_id=520292677 node_paths=PackedStringArray("prf_animation")]
 script = ExtResource("1_i82w0")
 prf_animation = NodePath("AnimationPlayer")
-question = ExtResource("2_k361y")
+question = ExtResource("2_jetoc")
 
 [node name="road" type="Sprite2D" parent="." unique_id=1181291318]
 position = Vector2(2, 0)
@@ -136,18 +137,23 @@ scale = Vector2(1.7894909, 1.7894913)
 texture = ExtResource("2_vr6lj")
 
 [node name="descriptionLabel" type="Label" parent="." unique_id=1581188514]
-offset_left = -870.0
-offset_top = 387.0
-offset_right = 1067.0
-offset_bottom = 567.0
+offset_left = -908.0
+offset_top = 374.0
+offset_right = 1029.0
+offset_bottom = 554.0
 theme_override_constants/outline_size = 28
 theme_override_font_sizes/font_size = 44
-text = "Hmm.. quais dos carros errados neste cruzamento congestionado...?"
+text = "Hmm.. quais desses carros estão errados neste cruzamento congestionado...?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=397864910]
 libraries/ = SubResource("AnimationLibrary_wd2oo")
+
+[node name="traffic-sound" type="AudioStreamPlayer2D" parent="." unique_id=1095500711]
+stream = ExtResource("9_jetoc")
+volume_db = -5.978
+autoplay = true
 
 [connection signal="pressed" from="car1/ButtonCar1" to="." method="_on_button_car_1_pressed"]
 [connection signal="pressed" from="car2/ButtonCar2" to="." method="_on_button_car_2_pressed"]
