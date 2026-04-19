@@ -3,9 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://fd1laj5co37a" path="res://scenes/leader_board_entrada.tscn" id="2_8lgqg"]
 [ext_resource type="Script" uid="uid://7a3unwvldyne" path="res://scripts/leaderboard_list.gd" id="2_wgq7h"]
 
+[sub_resource type="Theme" id="Theme_wgq7h"]
+
 [node name="Leaderboard" type="Node2D" unique_id=1148129305]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1773973440]
+custom_minimum_size = Vector2(400, 600)
 offset_left = -442.0
 offset_top = -258.0
 offset_right = 646.0
@@ -13,6 +16,7 @@ offset_bottom = 354.0
 
 [node name="LeaderboardList" type="VBoxContainer" parent="ScrollContainer" unique_id=1461985699]
 layout_mode = 2
+theme = SubResource("Theme_wgq7h")
 script = ExtResource("2_wgq7h")
 entry_scene = ExtResource("2_8lgqg")
 
