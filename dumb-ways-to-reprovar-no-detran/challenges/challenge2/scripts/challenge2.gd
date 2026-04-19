@@ -11,10 +11,9 @@ func _ready():
 	super._ready()
 
 func _on_timeout():
-	check_win_condition()
-	check_lose_condition()
-	# or
-	lose.emit(self)
+	if not check_win_condition():
+		if not check_lose_condition():
+			lose.emit(self)
 
 func _on_button_car_1_pressed():
 	particle_emit(true)
@@ -29,14 +28,18 @@ func _on_button_car_3_pressed():
 	particle_emit(false)
 	car_3_detected = true
 
-func check_win_condition():
+func check_win_condition() -> bool:
 	if car_1_detected and car_2_detected:
 		win.emit(self, win_points_default_value())
+		return true
+	return false
 
-func check_lose_condition():
+func check_lose_condition() -> bool:
 	if car_3_detected:
 		lose.emit(self)
+		return true
+	return false
 
 func _on_particle_finished():
-	check_win_condition()
-	check_lose_condition()
+	if not check_win_condition():
+		check_lose_condition()

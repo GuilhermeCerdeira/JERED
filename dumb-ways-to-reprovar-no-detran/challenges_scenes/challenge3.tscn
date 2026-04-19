@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bqnc7ubwej5vr"]
+
+[ext_resource type="Script" uid="uid://desyas8f6kojn" path="res://challenges/challenge3/scripts/challenge3.gd" id="1_jptyp"]
+[ext_resource type="Texture2D" uid="uid://cjfaiifjote3k" path="res://challenges/challenge3/images/question-3.png" id="2_c76mr"]
+[ext_resource type="VideoStream" uid="uid://dnqv31dj5kxi3" path="res://challenges/challenge3/videos/chuvaogv.ogv" id="3_c868o"]
+[ext_resource type="Texture2D" uid="uid://dgsspkjk2mqes" path="res://challenges/challenge3/images/bg-challenge-3.png" id="4_c76mr"]
+[ext_resource type="Texture2D" uid="uid://ces1d1glvbawd" path="res://challenges/challenge3/images/brake-pedal-challenge-sprite-sheet-3.png" id="5_c868o"]
+[ext_resource type="Texture2D" uid="uid://ca3m01ga5m8m1" path="res://challenges/challenge3/images/pointer-challenge-3.png" id="6_lww0y"]
+[ext_resource type="AudioStream" uid="uid://4amhqoq5kkqe" path="res://challenges/challenge3/sounds/rain.mp3" id="7_c76mr"]
+
+[node name="Challenge3" type="Node2D" unique_id=520292677 node_paths=PackedStringArray("light_toggle", "break_sprite")]
+script = ExtResource("1_jptyp")
+light_toggle = NodePath("lights")
+break_sprite = NodePath("breaks")
+question = ExtResource("2_c76mr")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=303188124]
+offset_left = -988.0
+offset_top = -1053.0
+offset_right = -342.0
+offset_bottom = -672.3333
+scale = Vector2(3, 3)
+stream = ExtResource("3_c868o")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=129249615]
+zoom = Vector2(0.595, 0.595)
+
+[node name="bg" type="Sprite2D" parent="." unique_id=1113414085]
+position = Vector2(-6.000001, 0)
+scale = Vector2(1.225, 1.225)
+texture = ExtResource("4_c76mr")
+
+[node name="breaks" type="Sprite2D" parent="." unique_id=1624872027]
+position = Vector2(31.000002, 361)
+scale = Vector2(1.225, 1.225)
+texture = ExtResource("5_c868o")
+hframes = 2
+
+[node name="lights" type="Sprite2D" parent="." unique_id=922259800]
+position = Vector2(-421.99997, -17.000023)
+scale = Vector2(1.225, 1.225)
+texture = ExtResource("6_lww0y")
+offset = Vector2(339.7, 18.79)
+
+[node name="lightbutton" type="Button" parent="." unique_id=1071729965]
+offset_left = -485.0
+offset_top = -82.00001
+offset_right = -362.80243
+offset_bottom = 37.972374
+focus_mode = 0
+toggle_mode = true
+flat = true
+
+[node name="breakbutton" type="Button" parent="." unique_id=849394095]
+offset_left = -43.0
+offset_top = 327.0
+offset_right = 89.24489
+offset_bottom = 429.04077
+focus_mode = 0
+toggle_mode = true
+flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=830685899]
+stream = ExtResource("7_c76mr")
+volume_db = -18.529
+autoplay = true
+
+[connection signal="toggled" from="lightbutton" to="." method="_on_lightbutton_toggled"]
+[connection signal="button_down" from="breakbutton" to="." method="_on_breakbutton_button_down"]
+[connection signal="button_up" from="breakbutton" to="." method="_on_breakbutton_button_up"]
